@@ -46,8 +46,8 @@ const nextISSTimesForMyLocation = function(callback) {
       if (err) return callback(err, null);
       fetchISSFLyoverTimes(coords, (err, passTimes) => {
         if (err) return callback(err, null);
-        return callback(null, passTimes)
-      })
+        return callback(null, passTimes);
+      });
     });
   });
 };
@@ -56,10 +56,7 @@ const printTimes = function(passTimes) {
   for (let i = 0; i < passTimes.length; i++) {
     const date = new Date(passTimes[i].risetime * 1000).toDateString();
     const time = new Date(passTimes[i].risetime * 1000).toTimeString();
-
-
-
-    const output =`Next pass at ${date} ${time} for ${passTimes[i].duration} seconds!`
+    const output = `Next pass at ${date} ${time} for ${passTimes[i].duration} seconds!`;
     console.log(output);
   }
 };
