@@ -1,7 +1,7 @@
 const needle = require('needle');
 
 const fetchMyIP = function() {
-  needle('get', 'https://api.ipify.rg?format=json')
+  return needle('get', 'https://api.ipify.org?format=json')
     .then((response) => {
       return response.body.ip;
     })
@@ -9,5 +9,5 @@ const fetchMyIP = function() {
       return error.errno, error.code;
     })
 };
-
+fetchMyIP()
 module.exports = { fetchMyIP, };
