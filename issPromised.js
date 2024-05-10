@@ -13,23 +13,25 @@ const fetchCoordsByIP = function(ip) {
       const coordsObj = {
         lat: response.body.latitude,
         lng: response.body.longitude,
-      }
+      };
       return coordsObj;
     });
 };
 
 const fetchISSFlyOverTimes = function(coords) {
   return needle('get', `https://iss-flyover.herokuapp.com/json/?lat=${coords.lat}&lon=${coords.lng}`)
-  .then((response) => {
-    return response.body.response;
-  });
+    .then((response) => {
+      return response.body.response;
+    });
 };
 
-const nextISSTimesForMyLocation = function(passTimes) {
+const nextISSTimesForMyLocation = function() {
   return fetchMyIP()
     .then((response) => fetchCoordsByIP(response))
     .then((response) => fetchISSFlyOverTimes(response))
-    .then((response) => { return response })
+    .then((response) => {
+      return response;
+    });
 };
 
 const printTimes = function(passTimes) {
