@@ -52,4 +52,17 @@ const nextISSTimesForMyLocation = function(callback) {
   });
 };
 
-module.exports = { nextISSTimesForMyLocation };
+const printTimes = function(passTimes) {
+  for (let i = 0; i < passTimes.length; i++) {
+    const date = new Date(passTimes[i].risetime * 1000).toDateString();
+    const time = new Date(passTimes[i].risetime * 1000).toTimeString();
+
+
+
+    const output =`Next pass at ${date} ${time} for ${passTimes[i].duration} seconds!`
+    console.log(output);
+  }
+};
+
+
+module.exports = { nextISSTimesForMyLocation, printTimes };
