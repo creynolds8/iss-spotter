@@ -8,7 +8,7 @@ const fetchMyIP = function(callback) {
       callback(Error(msg), null);
       return;
     }
-    const ip = body.ip
+    const ip = body.ip;
     callback(null, ip);
   });
 };
@@ -22,14 +22,14 @@ const fetchCoordsByIP = function(ip, callback) {
       return;
     }
     const coordsObj = {
-      lat: body.latitude, 
+      lat: body.latitude,
       lng: body.longitude,
-    }
-    callback(null, coordsObj)
-  })
-}
+    };
+    callback(null, coordsObj);
+  });
+};
 
-module.exports = { 
+module.exports = {
   fetchMyIP,
   fetchCoordsByIP,
 };
