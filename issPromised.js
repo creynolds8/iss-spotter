@@ -9,5 +9,19 @@ const fetchMyIP = function() {
       return error.errno, error.code;
     })
 };
-fetchMyIP()
-module.exports = { fetchMyIP, };
+
+const fetchCoordsByIP = function(ip) {
+  return needle('get', `http://ipwho.is/${ip}`)
+    .then((response) => {
+      const coordsObj = {
+        lat: response.body.latitude,
+        lng: response.body.longitude,
+      }
+      return coordsObj;
+    })
+    .catch((error) => {
+      return error.errno, error.code;
+    })
+};
+
+module.exports = { fetchMyIP, fetchCoordsByIP };
